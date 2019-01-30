@@ -91,7 +91,7 @@ static const GLfloat vertices[] = {
     glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 4*5, (char*)NULL+12);
     
     
-    NSString* path = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"IMG_3147.JPG"];
+    NSString* path = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"大图.jpg"];
     UIImage* image = [[UIImage alloc] initWithContentsOfFile:path];
     _imageSize = image.size;
     image = nil;
@@ -117,6 +117,17 @@ static const GLfloat vertices[] = {
     e = glGetError();
     
     NSLog(@"1");
+    
+    
+    self.view.userInteractionEnabled = YES;
+    UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeSelfView:)];
+    [self.view addGestureRecognizer:tapGesture];
+    
+}
+
+
+- (void)removeSelfView:(UITapGestureRecognizer *)gesture {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
